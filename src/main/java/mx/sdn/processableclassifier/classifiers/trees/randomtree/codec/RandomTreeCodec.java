@@ -11,10 +11,8 @@ public class RandomTreeCodec {
     public RandomTree decode(String modelPath) {
         RandomTree randomTree = new RandomTree();
         try {
-//            File file = new File(RandomTreeCodec.class.getResource(modelPath).getFile());
-//            String path = file.getAbsolutePath();
-            ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-            String path = classloader.getResource(modelPath).getPath();
+            File file = new File(RandomTreeCodec.class.getResource(modelPath).getFile());
+            String path = file.getAbsolutePath();
             System.out.println("Model path: " + path);
             randomTree = (RandomTree) SerializationHelper.read(path);
         } catch (Exception e) {

@@ -17,8 +17,7 @@ public class Main {
 
         switch (args[0]) {
             case "randomtree":
-//                String path = "randomTree.appddos.model";
-                String path = "/D:/Repos/_SDN/ProcessableJavaClassifier/target/classes/randomTree.appddos.model";
+                String path = "/randomTree.appddos.model";
                 classifier = new RandomTreeBinClassifier();
                 classifier.Load(path);
                 break;
