@@ -9,7 +9,7 @@ public class Main {
         int classifiedAs = -1;
 
         if (args.length != 41) {
-            System.out.println(-1);
+            System.out.println(-400);
             return;
         }
 
@@ -22,7 +22,7 @@ public class Main {
                 classifier.Load(path);
                 break;
             default:
-                System.out.println(-1);
+                System.out.println(-404);
                 return;
         }
 
@@ -71,7 +71,7 @@ public class Main {
             );
         } catch (Exception exception) {
             // Handle parseInt exception. Break if non-integers were received.
-            System.out.println(-1);
+            System.out.println(-500);
             return;
         }
 

@@ -110,13 +110,11 @@ public class RandomTreeBinClassifier extends Classifier {
 
     public void Load(String filepath) {
         try {
-            System.out.println("DEBUG: Constructing codec...");
             RandomTreeCodec codec = new RandomTreeCodec();
             tree = codec.decode(filepath);
             super.Load(filepath);
         } catch (Exception e) {
-            System.out.println("ERROR: Exception thrown at Load()");
-            e.printStackTrace();
+            return;
         }
     }
 
@@ -131,27 +129,19 @@ public class RandomTreeBinClassifier extends Classifier {
                 return Class.ERROR.value;
             }
 
-            System.out.println("DEBUG: Building instance for classification.");
             Instance instance = buildInstance(f);
 
             try {
-                System.out.println("DEBUG: Calling classifyInstance()...");
                 Double doubleClass = tree.classifyInstance(instance);
                 Class classifiedAs = Class.valueOf(doubleClass.intValue());
 
-                System.out.println("DEBUG: Flow classified as " + classifiedAs);
-
                 return classifiedAs.value;
             } catch(Exception e) {
-                System.out.println("ERROR: Error while trying to classify flow.");
-                e.printStackTrace();
+                return -512;
             }
         } catch (Exception e) {
-            System.out.println("ERROR: Exception thrown at Classify");
-            e.printStackTrace();
+            return -513;
         }
-
-        return Class.ERROR.value;
     }
 
     private Instance buildInstance(Flow f) {
@@ -309,10 +299,7 @@ public class RandomTreeBinClassifier extends Classifier {
 
             return instance;
         } catch (Exception e) {
-            System.out.println("ERROR: Exception thrown at buildInstance()");
-            e.printStackTrace();
+            return null;
         }
-
-        return null;
     }
 }
