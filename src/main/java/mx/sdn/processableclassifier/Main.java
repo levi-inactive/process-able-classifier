@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         int classifiedAs = -1;
 
-        if (args.length != 40) {
+        if (args.length != 41) {
             System.out.println(-1);
             return;
         }
@@ -17,7 +17,7 @@ public class Main {
 
         switch (args[0]) {
             case "randomtree":
-                String path = "/randomTree.appddos.model";
+                String path = args[1];
                 classifier = new RandomTreeBinClassifier();
                 classifier.Load(path);
                 break;
@@ -29,7 +29,6 @@ public class Main {
         Flow flow;
         try {
             flow = new Flow(
-                    Integer.parseInt(args[1]),
                     Integer.parseInt(args[2]),
                     Integer.parseInt(args[3]),
                     Integer.parseInt(args[4]),
@@ -67,7 +66,8 @@ public class Main {
                     Integer.parseInt(args[36]),
                     Integer.parseInt(args[37]),
                     Integer.parseInt(args[38]),
-                    Integer.parseInt(args[39])
+                    Integer.parseInt(args[39]),
+                    Integer.parseInt(args[40])
             );
         } catch (Exception exception) {
             // Handle parseInt exception. Break if non-integers were received.
